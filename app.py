@@ -3,7 +3,7 @@ from flask_restplus import Api, Resource, fields, reqparse
 
 app = Flask(__name__)
 # API Configs
-api = Api(app, version="0.1", title="People API with Flask-RESTPlus", description="A quite simple API to working with personal data", doc="/api") 
+api = Api(app, version="0.1", title="People API with Flask-RESTPlus", description="A quite simple API to working with personal data") 
 
 # Namespaces 
 peopleCollection_api = api.namespace("peopleCollection", description="People Collection Operations")
@@ -40,7 +40,7 @@ peopleList = [
     ]
 
 # Create a Flask page
-@app.route("/about")
+@app.route("/")
 def about():
     return """<br><br><center>Hey! 
     <br> I am <b>Furkan Torun</b>. 
@@ -57,15 +57,17 @@ def about():
 class PeopleCollection(Resource):
 
     # @peopleCollection_api.marshal_with(people_model, envelope="peopleList")
-    def get(self): # Here, GET is a keyword
+    def get(self):
         return peopleList
 
+    @peopleCollection_api.response(200, "Success")
+    @peopleCollection_api.response(400, "Bad Request or Invalid Argument")
     @peopleCollection_api.expect(people_model)
     def post(self):
         new_person = api.payload
         new_person["id"] = max([temp_id["id"] for temp_id in peopleList]) + 1 
         peopleList.append(new_person)
-        return new_person, 201 # Here, 201 is HTTP Status Code: Created
+        return new_person
 
 @person_api.route("/<int:id>")
 class PersonByID(Resource):
