@@ -122,12 +122,13 @@ class PersonByMail(Resource):
 @arg_api.route("/")
 class argParser(Resource):
     
-    @api.expect(parser)
+    @arg_api.expect(parser)
     def get(self):
         args = parser.parse_args()
         page_number = args["page_number"]
         per_page = args["per_page"]
         return "{} records are shown per page in the {}. page.".format(per_page, page_number)
+
 if __name__ == "__main__":
     app.secret_key = "Flask-RESTPlusAPI"
     app.run(debug=True)
