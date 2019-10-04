@@ -33,6 +33,7 @@ It is a simple Flask RESTful web service which is builded with [RESTPlus extensi
 
   
   
+  
 
 ## Screenshots
 
@@ -54,13 +55,13 @@ It is a simple Flask RESTful web service which is builded with [RESTPlus extensi
 
 - **İçerik/Başlıklar:**
 
-- :hash:Flask Nedir, RESTFul API Nedir?
+- :hash: Flask Nedir, RESTFul API Nedir?
 
-- :hash:Flask Kurulumu ve "Merhaba Flask!"
+- :hash: Flask Kurulumu ve "Merhaba Flask!"
 
-- :hash:RESTPlus eklentisinin kullanımı
+- :hash: RESTPlus eklentisinin kullanımı
 
-- :hash:Kaynaklar / Referanslar
+- :hash: Kaynaklar / Referanslar
 
   
 
@@ -103,15 +104,10 @@ Python (.py) uzantılı dosyamızı oluşturduktan hemen sonra Flask kütüphane
 Hemen sonrasında `app = Flask(__name__` ile Flask objemizi `__name__` değişkenin ile beraber oluşturuyor ve ardından bir if koşulu ile mevcut dosyamız doğrudan mı çalıştırılmış yoksa modül olarak bir başka yerden mi çalıştırılmış kontrol ediyoruz. Oluşturduğumuz dosya doğrudan çalışıtırılması durumunda `__main__` parametresini alacak ve Flask uygulamamızı `debug=True` değişkeni sayesinde hata ayıklamayı aktif hale getirmiş olarak çalıştıracağız.
 
 ````
-
 app = Flask(__name__)
 
-  
-
 if __name__ == "__main__":
-
-app.run(debug=True)
-
+    app.run(debug=True)
 ````
 
   
@@ -119,13 +115,9 @@ app.run(debug=True)
 Şimdi ise hemen basit bir sayfa hazırlayalım. Bu noktada Flask ile statik ve dinamik bağlatıların oluşturulumasının çok kolay olduğunu not etmekte fayda var:
 
 ````
-
 @app.route("/")
-
 def ana_sayfa():
-
-return "Merhaba Flask!"
-
+    return "Merhaba Flask!"
 ````
 
 Buradaki kod bloğunda bulunan `@app.route()` ile ilk sayfamızı `"/"` dizininde oluşturmayı başardık. Sonrasında bir fonksiyon tanımlayarak, ekrana bir yazıyı basmasını sağladık.
@@ -164,6 +156,7 @@ Hemen sonrasında *`"peopleCollection_api"`* olarak bir isim alanı *`(namespace
   
   
 
+
 > Burada not edilmesi gereken nokta, oluşturulan her namespace Swagger arayüzünde birer başlık olarak gözükecektir. (Ekran görüntüleri *"Screenshots"* başlığı altındaki ilk görselden anlaşıldığı üzere bu örnek RESTFul servisinde 3 namespace tanımlandı.) Ek olarak, bu namespace için belirlenen URL'de şu şekildedir: **`127.0.0.1:5000/peopleCollection/`**
 
   
@@ -192,6 +185,7 @@ Yapılan tüm bu çalışmayı denemek için hemen **`127.0.0.1:5000`** 'e bakal
 
   
 
+
 **Model tanımlamak**
 
   
@@ -212,21 +206,21 @@ Tabii ki bunun için ilgili veri türlerini tanımlamak adına `fields`'ı da pr
 
 people_model = api.model("people",
 
-{
+    {
 
-"id": fields.Integer(description="ID Number", example=123456798, readonly=True),
+        "id": fields.Integer(description="ID Number", example=123456798, readonly=True),
 
-"name": fields.String(description="Full name", example="Richard Hendricks", required=True, min=5),
+        "name": fields.String(description="Full name", example="Richard Hendricks", required=True, min=5),
 
-"email": fields.String(description="Email Adress", example="richardhendricks@piedpier.com", required=True, min=10),
+        "email": fields.String(description="Email Adress", example="richardhendricks@piedpier.com", required=True, min=10),
 
-"github": fields.String(description="Github username", example="richardhendricks"),
+        "github": fields.String(description="Github username", example="richardhendricks"),
 
-"twitter": fields.String(description="Twitter username", example="richardhendricks"),
+        "twitter": fields.String(description="Twitter username", example="richardhendricks"),
 
-"country": fields.String(description="Country", example="USA")
+        "country": fields.String(description="Country", example="USA")
 
-}
+    }
 
 )
 
@@ -254,13 +248,13 @@ Modelimiz, ana sayfada artık bu şekilde gözükmekte:
 
 def post(self):
 
-new_person = api.payload
+    new_person = api.payload
 
-new_person["id"] = max([temp_id["id"] for temp_id in peopleList]) + 1
+    new_person["id"] = max([temp_id["id"] for temp_id in peopleList]) + 1
 
-peopleList.append(new_person)
+    peopleList.append(new_person)
 
-return new_person
+    return new_person
 
 ````
 
@@ -284,15 +278,20 @@ Daha öncesinde  `peopleCollection_api.route("/")` ile `peopleList` içerisindek
 - Hemen altında ise `@person_api.doc(params={"id":"ID number of the person"})` hazırladığımız API'ın doğru ve anlaşılır şekilde dokümante edilmesi için bu parametrenin açıklamasını belirtelim.
 - Devamında ise tekrar GET fonksiyonumuzu bu ID parametresini alacak şekilde hazırlayalım:
 
-`def get(self, id): 
-    for person in peopleList: 
-        if person["id"] == id: 
-            return person 
-        else: 
-            return "The person with and ID of {} is not found!".format(id)`
+````
+def get(self, id): 
+for person in peopleList: 
+    if person["id"] == id: 
+        return person 
+    else: 
+        return "The person with and ID of {} is not found!".format(id)
+````
+
 - Tebrikler, artık hazır!
 
 ![GET ile ID parametresine göre kullanıcı bilgilerini göstermek](https://user-images.githubusercontent.com/49681382/66228359-e8423e00-e6e7-11e9-9377-e80050b1f81d.png)
+
+
 
 
 **Argüman ayrıştırma (Argument parsing)**
@@ -307,7 +306,9 @@ Daha öncesinde  `peopleCollection_api.route("/")` ile `peopleList` içerisindek
 
 	`parser.add_argument("per_page", type=int, choices=[10, 20, 30, 40, 50], required=False, help="Page number")`
 
+
 > Argument Parsing hakkındaki daha fazla teknik detay için [orijinal dokümana göz at](https://flask-restplus.readthedocs.io/en/stable/parsing.html)abilirsiniz.
+
 
 - Son olarak (yazdığımız koda göre sırasıyla) `namespace` için `route`'ı belirtelim, ve yeni bir sınıf oluşturup daha öncesinde  `parser` olarak tanımladığımız `RequestParser` fonksiyonunu yeni bir sınıf *(argParser)* içerisine dahil edip, `GET` isteğimizi hazırlayalım. Burada ise argümanları ayrıştırması ve depolaması için `args` 'ı tanımlayalım. Sonrasında da `page_number` ve `per_page` isimli değişkenlerini argümanlarımızın değerlerine ulaşacak şekilde hazır hale getirelim:
 
@@ -318,7 +319,9 @@ Daha öncesinde  `peopleCollection_api.route("/")` ile `peopleList` içerisindek
 >  Epey süredir çeşitli amaçlarla kullandığım [carbon.now.sh](https://carbon.now.sh) 'ı da burada kullanmak istedim.
 >   Eğer yazdığınız -tercihen kısa- kodları tasarımdan ödün vermeksizin paylaşmak isterseniz, [carbon.now.sh](https://carbon.now.sh) 'ı deneyebilirsiniz!
 
+
  - Artık her şey tamam! 
+
  
 ![Argument parsing](https://user-images.githubusercontent.com/49681382/66161377-d358a280-e634-11e9-9afc-750b7b47f2e5.png)
 
