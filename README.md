@@ -23,11 +23,12 @@ It is a simple Flask RESTful web service which is builded with [RESTPlus extensi
 
 `git clone https://github.com/furkanmtorun/Flask-RESTPlusAPI.git`
 
-- Open your terminal and type following command:
+- Open your terminal and type the following command:
 
 `python app.py`
 
-- It's ready to use on `http://127.0.0.1:5000/api`
+- It's ready to use on `http://127.0.0.1:5000`
+
 
 > In the process of development, I have used Python 3. If you use both Python 2 and Python 3, specify your command as "**pip3**" and "**python3**" while installing the packages and running.
 
