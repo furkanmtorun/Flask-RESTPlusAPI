@@ -39,20 +39,6 @@ peopleList = [
         }
     ]
 
-# Create a Flask page
-@app.route("/")
-def about():
-    return """<br><br><center>Hey! 
-    <br> I am <b>Furkan Torun</b>. 
-    <br> email: <a href="mailto:furkanmtorun@gmail.com">furkanmtorun@gmail.com</a>
-    <br> github: <a href="http://github.com/furkanmtorun">@furkanmtorun</a>
-    <br> twitter: <a href="http://twitter.com/furkanmtorun">@furkanmtorun</a>
-    <br><br><hr><br> <i>* I have just tried to create a quite simple RESTful API and prepare a Turkish documentation to build it from scratch. </i>
-    <br><br> Codes and Turkish documentation are available on <a href="http://github.com/furkanmtorun/Flask-RESTPlusAPI">http://github.com/furkanmtorun/Flask-RESTPlusAPI</a>.
-    <br><br> Any feedback or suggestion will be appreciated!
-    <br><br> <i>Thanks!</i>
-    </center>"""
-
 @peopleCollection_api.route("/")
 class PeopleCollection(Resource):
 
