@@ -7,7 +7,7 @@
 
   
 
-It is a simple Flask RESTful web service which is builded with [RESTPlus extension](https://flask-restplus.readthedocs.io/en/stable/). So, **app.py** file can be used as a template to create a RESTful API that integrates [Swagger UI](https://swagger.io/). Here, also, use of this extension and building a RESTful web service from scratch is explained in Turkish. !
+It is a simple Flask RESTful web service which is builded with [RESTPlus extension](https://flask-restplus.readthedocs.io/en/stable/). So, **app.py** file can be used as a template to create a RESTful API that integrates [Swagger UI](https://swagger.io/). Here, also, use of this extension and building a RESTful web service from scratch is explained in Turkish.
 
   
 
