@@ -9,11 +9,12 @@
 
 It is a simple Flask RESTful web service which is builded with [RESTPlus extension](https://flask-restplus.readthedocs.io/en/stable/). So, **app.py** file can be used as a template to create a RESTful API that integrates [Swagger UI](https://swagger.io/). Here, also, use of this extension and building a RESTful web service from scratch is explained in Turkish.
 
+[![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-up-brightgreen)](http://178.62.230.206/Flask-RESTPlusAPI/) [![GitHub license](https://img.shields.io/badge/License-MIT-green)](https://github.com/furkanmtorun/Flask-RESTPlusAPI/blob/master/LICENSE) 
   
 
 ## Requirements, Installation and Usage
 
-- Install the required packages if you not already:
+- Install the required packages if you do not already:
 
 ` pip install Flask `
 
@@ -74,14 +75,14 @@ It is a simple Flask RESTful web service which is builded with [RESTPlus extensi
 
 **Flask nedir?**
 
-[Flask](https://palletsprojects.com/p/flask/) web uygulamaları geliştirmenize olanak sağlayan Python temelli bir *microframework*tür. Ölçeklenebilir ve sürdürelebilir web uygulamlarını oluşturmaya fırsat vermesi ve çeşitli paket/modüllerini barındıran bir framework olması ile birçok kurum ve kuruluş tarafından kullanılmaktadır. Kurum ve kuruluşların listesi için [bu](https://stackshare.io/flask) ve [şu](https://github.com/rochacbruno/flask-powered) adresi ziyaret edebilirsiniz.
+[Flask](https://palletsprojects.com/p/flask/) web uygulamaları geliştirmenize olanak sağlayan Python temelli bir `microframework` tür. Ölçeklenebilir ve sürdürülebilir web uygulamlarını oluşturmaya fırsat vermesi ve çeşitli paket/modüllerini barındıran bir framework olması ile birçok kurum ve kuruluş tarafından kullanılmaktadır. Kurum ve kuruluşların listesi için [bu](https://stackshare.io/flask) ve [şu](https://github.com/rochacbruno/flask-powered) adresleri ziyaret edebilirsiniz.
 
   
 
 **RESTFul API nedir?**
 
-REST (REpresentational State Transfer) (*Temsili Durum Transferi*), HTTP protokolü sayesinde istemci ve sunucu arasında JSON,XML, HTML, TEXT gibi pek çok formatta veri formatı ile uygulamaların haberleşmesini sağlar. [\[1\]](https://ceaksan.com/tr/rest-soap-api-nedir/), [\[2\]](https://denizirgin.com/rest-ve-restful-web-servis-kavram%C4%B1-30bc4400b9e0) REST standartlarına uygun yazılan web servislerine RESTful servisler denir. [\[1\]](https://ceaksan.com/tr/rest-soap-api-nedir/), [\[2\]](https://denizirgin.com/rest-ve-restful-web-servis-kavram%C4%B1-30bc4400b9e0)
-RESTPlus eklentisinin en önemli özelliği ise API'lar için yaygın şekilde kullanılan, hem dokümantasyon hem de arayüz ihtiyacını fazlasıyla karşılayan [Swagger](https://swagger.io/) ile entegre çalışmasıdır. 
+`REST (REpresentational State Transfer) (*Temsili Durum Transferi*)`, HTTP protokolü sayesinde istemci ve sunucu arasında JSON, XML, HTML, TEXT gibi pek çok veri formatı ile uygulamaların haberleşmesini sağlar [\[1\]](https://ceaksan.com/tr/rest-soap-api-nedir/), [\[2\]](https://denizirgin.com/rest-ve-restful-web-servis-kavram%C4%B1-30bc4400b9e0). REST standartlarına uygun yazılan web servislerine ise `RESTful servisler` denir [\[1\]](https://ceaksan.com/tr/rest-soap-api-nedir/), [\[2\]](https://denizirgin.com/rest-ve-restful-web-servis-kavram%C4%B1-30bc4400b9e0). 
+Bu noktada *RESTPlus eklentisi*nin en önemli özelliği ise API'lar için yaygın şekilde kullanılan, hem dokümantasyon hem de arayüz ihtiyacını fazlasıyla karşılayan [Swagger](https://swagger.io/) ile entegre çalışmasıdır. 
   
 
 ### :hash: Flask Kurulumu ve "Merhaba Flask!"
@@ -102,7 +103,7 @@ Python (.py) uzantılı dosyamızı oluşturduktan hemen sonra Flask kütüphane
 
   
 
-Hemen sonrasında `app = Flask(__name__` ile Flask objemizi `__name__` değişkenin ile beraber oluşturuyor ve ardından bir if koşulu ile mevcut dosyamız doğrudan mı çalıştırılmış yoksa modül olarak bir başka yerden mi çalıştırılmış kontrol ediyoruz. Oluşturduğumuz dosya doğrudan çalışıtırılması durumunda `__main__` parametresini alacak ve Flask uygulamamızı `debug=True` değişkeni sayesinde hata ayıklamayı aktif hale getirmiş olarak çalıştıracağız.
+Hemen sonrasında `app = Flask(__name__)` ile Flask objemizi `__name__` değişkenin ile beraber oluşturuyor ve ardından bir if koşulu ile mevcut dosyamız doğrudan mı çalıştırılmış yoksa modül olarak bir başka yerden mi çalıştırılmış kontrol ediyoruz. Oluşturduğumuz dosya doğrudan çalışıtırılması durumunda `__main__` parametresini alacak ve Flask uygulamamızı `debug=True` değişkeni sayesinde hata ayıklamayı aktif hale getirmiş olarak çalıştıracağız.
 
 ````
 app = Flask(__name__)
@@ -133,7 +134,7 @@ Son olarak dosyanın bulunduğu dizinde komut istemcisinden `python app.py` komu
 
 Eklentiyi yüklemek adına `pip install flask-restplus` komutunu çalıştırabilirsiniz.
 
-Sonrasında eklentiyi (app'i tanımlamak adına **Api**'ı, bir çok sınıfta parametre olarak alınan **Resource**'u) projemize çağıralım:
+Sonrasında eklentiyi (`app`'i tanımlamak adına **Api**'ı, **Resource**'u) projemize çağıralım:
 
 `from flask_restplus import Api, Resource`
 
@@ -158,26 +159,26 @@ Hemen sonrasında *`"peopleCollection_api"`* olarak bir isim alanı *`(namespace
   
 
 
-> Burada not edilmesi gereken nokta, oluşturulan her namespace Swagger arayüzünde birer başlık olarak gözükecektir. (Ekran görüntüleri *"Screenshots"* başlığı altındaki ilk görselden anlaşıldığı üzere bu örnek RESTFul servisinde 3 namespace tanımlandı.) Ek olarak, bu namespace için belirlenen URL'de şu şekildedir: **`127.0.0.1:5000/peopleCollection/`**
+> Burada not edilmesi gereken nokta, oluşturulan her `namespace` Swagger arayüzünde birer başlık olarak gözükecektir. (Ekran görüntüleri *"Screenshots"* başlığı altındaki ilk görselden anlaşıldığı üzere bu örnek RESTFul servisinde 3 namespace tanımlandı.) Ek olarak, bu namespace için belirlenen URL'de şu şekildedir: **`127.0.0.1:5000/peopleCollection/`**
 
   
 
-Son olarak, oluşturduğumuz namespace'ler üzerinden tıpkı normal sayfaları hazırlar gibi route'ları
+Son olarak, oluşturduğumuz namespace'ler üzerinden tıpkı normal sayfaları hazırlar gibi `route`'ları belirteceğiz: 
 
-belirteceğiz: `peopleCollection_api.route("/")`
+`peopleCollection_api.route("/")`
 
   
 
 Daha sonrasında bir sınıf oluşturup, ilk GET çağrımızı peopleList adındaki basit bir sözlük (dictionary)'ü çıktı veren bir fonksiyon ile hazırlayacağız:
 
   
-
+````
 class PeopleCollection(Resource):
 
 def get(self):
 
-return peopleList
-
+    return peopleList
+````
   
 
 Yapılan tüm bu çalışmayı denemek için hemen **`127.0.0.1:5000`** 'e bakalım: **Tebrikler!**
@@ -191,7 +192,7 @@ Yapılan tüm bu çalışmayı denemek için hemen **`127.0.0.1:5000`** 'e bakal
 
   
 
-Modeller, belirli bir format çerçevesinde (örneğin JSON) veri yollamak ya da çağırmak için kullanılmaktadır. Şimdi `people` isimli modeli `people_model` 'a tanımlayalım:
+Modeller, **belirli bir format çerçevesinde** veri yollamak ya da çağırmak için kullanılmaktadır. Şimdi `people` isimli modeli `people_model` 'a tanımlayalım:
 
   
 
